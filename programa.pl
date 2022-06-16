@@ -91,13 +91,13 @@ hayCoros(Banda) :-
 
 
 % El predicado "\=" NO ES INVERSIBLE.
-% porque NO PUEDO HACER una consulta existencial (con variable).
-% El predicado ">" TAMPOCO ES INVERSIBLE.
+% porque NO PUEDO HACER una consulta existencial (con variable). "Existe alguien distinto de hola" hola \= Alguien
+% El predicado ">" TAMPOCO ES INVERSIBLE, por lo mismo. No puedo preguntar si existe alguien menor que 3: Alguien < 3
     
 % Si la banda estaba viva en un año determinado.
 
 estabaVivaEn(Banda, Anio):-
-    vivioEntre(Banda, Comienzo,Fin),
+    vivioEntre(Banda, Comienzo,Fin), % es importante que esta vaya primero, sino no anda, porque el between no es inversible para los primeros dos parámetros.
     between(Comienzo,Fin,Anio).
 
 
